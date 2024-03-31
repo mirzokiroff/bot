@@ -36,8 +36,7 @@ class Course(Model):
 
 class CourseMedia(Model):
     media = ForeignKey(Course, on_delete=CASCADE, null=True, blank=True)
-    course_video = FileField(verbose_name="Kurs Videosi", upload_to='kurslar/',
-                             validators=[FileExtensionValidator(['mp4', 'webm', 'mov'])], blank=True, null=True)
+    course_video = CharField(verbose_name="Kurs Videosi ID'si", blank=True, null=True)
     course_text = TextField(verbose_name="Kurs Matni", blank=True, null=True)
     course_photo = ImageField(verbose_name="Kurs Rasmi", upload_to='kurslar/', null=True, blank=True)
     course_pdf = FileField(verbose_name="Kurs PDF Fayl", upload_to='kurslar/', null=True, blank=True)

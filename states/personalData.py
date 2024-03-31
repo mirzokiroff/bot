@@ -1,5 +1,6 @@
 from aiogram.dispatcher.filters.state import StatesGroup, State
 
+
 class PersonalData(StatesGroup):
     fullname = State()
     phone_number = State()
@@ -42,3 +43,8 @@ class Education(StatesGroup):
 
 class contact_us(StatesGroup):
     contact_us = State()
+
+
+class Admin(StatesGroup):
+    video = State()
+    add_video = State()

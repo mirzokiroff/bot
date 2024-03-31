@@ -142,13 +142,12 @@ async def select_course_type_eng(message: types.Message, state: FSMContext):
                 for media in course_media:
 
                     if media['media_id'] == course_id:
-                        full_video_path = os.path.join(media_root, media['course_video'])
                         full_photo_path = os.path.join(media_root, media['course_photo'])
                         full_pdf_path = os.path.join(media_root, media['course_pdf'])
 
-                        if os.path.exists(full_video_path) and media['course_video']:
+                        if media['course_video']:
                             caption = media['course_text'] if media['course_text'] else ""
-                            await message.answer_video(video=open(full_video_path, 'rb'), caption=caption)
+                            await message.answer_video(video=media['course_video'], caption=caption)
 
                         if os.path.exists(full_photo_path) and media['course_photo']:
                             photos.append(full_photo_path)
