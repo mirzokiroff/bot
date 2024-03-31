@@ -48,3 +48,4 @@ class contact_us(StatesGroup):
 class Admin(StatesGroup):
     video = State()
     add_video = State()
+    reklama = State()
