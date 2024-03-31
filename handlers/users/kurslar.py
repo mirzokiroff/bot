@@ -120,9 +120,10 @@ async def select_course_type_eng(message: types.Message, state: FSMContext):
 
         else:
 
-            await message.answer(text="Bu yerda siz Kurs haqida ma'lumotlarga ega bo'lishingiz mumkun, Iltimos biroz kuting",
+            await message.answer(
+                text="Bu yerda siz Kurs haqida ma'lumotlarga ega bo'lishingiz mumkun, Iltimos biroz kuting",
 
-                                 reply_markup=types.ReplyKeyboardRemove())
+                reply_markup=types.ReplyKeyboardRemove())
 
             course_name = data.get('course_name')
 
@@ -135,7 +136,7 @@ async def select_course_type_eng(message: types.Message, state: FSMContext):
             photos = []
             pdfs = []
 
-            media_root = '/Users/user/PycharmProjects/aiogram-bot-template/extra/media/'
+            media_root = '/var/www/bot/extra/media/'
 
             if course_name:
                 for media in course_media:
@@ -231,7 +232,7 @@ async def select_course_type_eng(message: types.Message, state: FSMContext):
             photos = []
             pdfs = []
 
-            media_root = '/Users/user/PycharmProjects/aiogram-bot-template/extra/media/'
+            media_root = '/var/www/bot/extra/media/'
 
             if course_name:
                 for media in course_media:  # noqa

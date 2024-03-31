@@ -93,17 +93,12 @@ async def menu(message: types.Message, state: FSMContext):
 
                         if edu_info['id'] == edu_media['media_id']:
 
-                            video_path = os.path.join('/Users/user/PycharmProjects/aiogram-bot-template/extra/media',
-                                                      edu_media['video'])
+                            media_root = '/Users/user/PycharmProjects/aiogram-bot-template/extra/media'
 
-                            photo_path = os.path.join('/Users/user/PycharmProjects/aiogram-bot-template/extra/media',
-                                                      edu_media['photo'])
-
-                            pdf_path = os.path.join('/Users/user/PycharmProjects/aiogram-bot-template/extra/media',
-                                                    edu_media['pdf_file'])
-
-                            edu_photo = os.path.join('/Users/user/PycharmProjects/aiogram-bot-template/extra/media',
-                                                     edu_info['edu_photo'])
+                            video_path = os.path.join(media_root, edu_media['video'])
+                            photo_path = os.path.join(media_root, edu_media['photo'])
+                            pdf_path = os.path.join(media_root, edu_media['pdf_file'])
+                            edu_photo = os.path.join(media_root, edu_info['edu_photo'])
 
                             if os.path.exists(video_path) and edu_media['video']:
                                 video_group.attach_video(types.InputFile(video_path))
@@ -269,7 +264,7 @@ async def menu(message: types.Message, state: FSMContext):
 
                     if location_video:
 
-                        video_path = os.path.join('/Users/user/PycharmProjects/aiogram-bot-template/extra/media/.',
+                        video_path = os.path.join('/var/www/bot/extra/media/',
                                                   location_video)
 
                         if os.path.exists(video_path):
@@ -351,7 +346,7 @@ async def menu(message: types.Message, state: FSMContext):
 
                     if location_video:
 
-                        video_path = os.path.join('/Users/user/PycharmProjects/aiogram-bot-template/extra/media/.',
+                        video_path = os.path.join('/var/www/bot/extra/media/',
                                                   location_video)
 
                         if os.path.exists(video_path):
