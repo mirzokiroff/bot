@@ -59,7 +59,8 @@ async def send_course_video(message: types.Message):
     selected_course = await db.select_course(course_name=selected_course_name)
 
     if selected_course:
-        await message.answer("Video yuborishingiz mumkun 🎬", reply_markup=types.ReplyKeyboardMarkup(
+        await message.answer("Video yuborishingiz mumkun 🎬"
+                             "\n\nESLATMA: Animation(gif) emas faqat Video yuboring", reply_markup=types.ReplyKeyboardMarkup(
             keyboard=[[types.KeyboardButton(text="Bekor qilish")]], resize_keyboard=True))
         await Admin.add_video.set()
     elif selected_course_name == uz.bosh_menu:
@@ -79,7 +80,7 @@ async def send_course_video(message: types.Message):
         await message.answer("Kechirasiz, kurs topilmadi. Iltimos, boshqa kurs tanlang.")
 
 
-@dp.message_handler(state=Admin.add_video, content_types=types.ContentType.VIDEO)
+@dp.message_handler(state=Admin.add_video, content_types=types.ContentType.ANY)
 async def handle_video(msg: types.Message, state: FSMContext):
     if msg.text == "Bekor qilish":
         await msg.answer("Bekor qilindi")  # noqa
@@ -147,7 +148,7 @@ async def handle_video(msg: types.Message, state: FSMContext):
 async def handle_reklama(msg: types.Message, state: FSMContext):
     all_users = await db.select_all_users()
     if msg.text == "Bekor qilish":
-        await msg.answer("Bekor qilindi")  # noqa
+        await msg.answer("Bekor qilindi")  # noqaZ
         courses = await db.select_all_courses()  # noqa
 
         courses_keyboard = []
