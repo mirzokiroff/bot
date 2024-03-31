@@ -72,7 +72,7 @@ async def send_course_video(message: types.Message):
         await MainMenu.menu.set()
     elif selected_course_name == "Reklama":
         await message.reply("Tayyor Reklamani Jo'nating!", reply_markup=types.ReplyKeyboardMarkup(
-            keyboard=[[types.KeyboardButton(text="Bekor qilish")]]))
+            keyboard=[[types.KeyboardButton(text="Bekor qilish")]], resize_keyboard=True))
         await Admin.reklama.set()
     else:
         await message.answer("Kechirasiz, kurs topilmadi. Iltimos, boshqa kurs tanlang.")
