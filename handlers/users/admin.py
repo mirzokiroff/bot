@@ -1,3 +1,5 @@
+import logging
+
 import aiogram
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -181,19 +183,25 @@ async def handle_reklama(msg: types.Message, state: FSMContext):
             blocked_users = []
             for user in all_users:
                 user_id = user['id']
-                if int(user['telegram_id']) != 5467465403:
-                    try:
+                try:
+                    if int(user['telegram_id']) != 5467465403:
                         await msg.copy_to(int(user['telegram_id']), caption=msg.caption,
                                           caption_entities=msg.caption_entities, reply_markup=msg.reply_markup)
-                    except aiogram.exceptions.ChatNotFound as e:
-                        print(f"User with ID {user_id} User with Username "
-                              f"{user['full_name']} not found or has blocked the bot. {e}")
                         summa += 1
-                        blocked_users.append(user['full_name'])
+                except aiogram.exceptions.ChatNotFound as e:
+                    print(f"User with ID {user_id} User with Username "
+                          f"{user['full_name']} not found >>> {e}")
+                    blocked_users.append(user['full_name'])
+                except aiogram.exceptions.BotBlocked as e:
+                    logging.warning(f"User with ID {user_id}, User with Username {user['full_name']} >>> {e}")
+                except aiogram.exceptions.UserDeactivated as e:
+                    logging.warning(f"User with ID {user_id}, User with Username {user['full_name']} >>> {e}")
+
             await bot.send_message(ADMIN_IDS[0], text=f"Botni bloklagan yoki topilmagan Userlar soni: {summa}"
                                                       f"\n\nBotni bloklagan yoki topilmagan Userlar: {blocked_users}")
             await state.finish()
             await msg.answer("Reklama barcha foydalanuvchilarga muvaffaqiyatli yuborildi!")
+
             courses = await db.select_all_courses()  # noqa
 
             courses_keyboard = []
