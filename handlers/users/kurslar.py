@@ -119,10 +119,8 @@ async def select_course_type_eng(message: types.Message, state: FSMContext):
             await Courses.course_selection.set()
 
         else:
-
             await message.answer(
                 text="Bu yerda siz Kurs haqida ma'lumotlarga ega bo'lishingiz mumkun, Iltimos biroz kuting",
-
                 reply_markup=types.ReplyKeyboardRemove())
 
             course_name = data.get('course_name')
@@ -139,8 +137,7 @@ async def select_course_type_eng(message: types.Message, state: FSMContext):
             media_root = '/var/www/bot/extra/media/'
 
             if course_name:
-                for media in course_media:
-
+                for media in course_media:  # noqa
                     if media['media_id'] == course_id:
                         full_photo_path = os.path.join(media_root, media['course_photo'])
                         full_pdf_path = os.path.join(media_root, media['course_pdf'])
@@ -236,13 +233,13 @@ async def select_course_type_eng(message: types.Message, state: FSMContext):
             if course_name:
                 for media in course_media:  # noqa
                     if media['media_id'] == course_id:
-                        full_video_path = os.path.join(media_root, media['course_video'])
+
                         full_photo_path = os.path.join(media_root, media['course_photo'])
                         full_pdf_path = os.path.join(media_root, media['course_pdf'])
 
-                        if os.path.exists(full_video_path) and media['course_video']:
+                        if media['course_video']:
                             caption = media['course_text'] if media['course_text'] else ""
-                            await message.answer_video(video=open(full_video_path, 'rb'), caption=caption)
+                            await message.answer_video(video=media['course_video'], caption=caption)
 
                         if os.path.exists(full_photo_path) and media['course_photo']:
                             photos.append(full_photo_path)
