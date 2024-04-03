@@ -24,7 +24,7 @@ async def bot_start(message: types.Message):
     await bot.send_message(chat_id=ADMINS[0], text=msg)
     await message.reply(
         f"Assalomu Alaykum! {message.from_user.full_name}\nExtra Education Center botiga xush kelibsiz! \n\n\n"
-        f"Здравствуйте! {message.from_user.full_name}\nДобро пожаловать в бот Центра дополнительного образования!")
+        f"Здравствуйте! {message.from_user.full_name}\nДобро пожаловать в бот Центра Extra!")
     if message.text == '/start':
         await message.answer("Tilni tanlang! \n\n\nВыберите ваш язык!",
                              reply_markup=types.ReplyKeyboardMarkup(
