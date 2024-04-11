@@ -2,7 +2,6 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import FileExtensionValidator
 from django.db.models import CharField, AutoField, BigIntegerField, Model, FileField, FloatField, DateTimeField, \
     BooleanField, URLField, TextField, ImageField, ForeignKey, CASCADE
-from django.utils import timezone
 
 
 # Create your models here.
@@ -11,11 +10,11 @@ class User(AbstractUser):
     full_name = CharField(verbose_name="F.I.SH", max_length=111, default='new_user', blank=True, null=True)
     username = CharField(verbose_name="Telegram username", unique=True, max_length=111, null=True, blank=True)
     phone_number = CharField(verbose_name="Telefon raqami", max_length=50, null=True, blank=True)
+    phone_number2 = CharField(verbose_name="Qo'shimcha Telefon raqami", max_length=50, null=True, blank=True)
+    activity = CharField(verbose_name="Faoliyat turi", max_length=33, null=True, blank=True)
     telegram_id = BigIntegerField(unique=True, null=True, default=1, blank=True)
-    date_joined = DateTimeField(null=True, blank=True, default=timezone.now)
+    date_joined = DateTimeField(auto_now=True, null=True, blank=True)
     language = CharField(verbose_name="Tanlangan til", max_length=33, null=True, blank=True)
-    confirmation_code = CharField(verbose_name="Tasdiqlash kodi", max_length=11, null=True, blank=True)
-    location = CharField(verbose_name="Foydalanuvchi Manzili", max_length=222, null=True, blank=True)
     #
     last_login = DateTimeField(auto_now=True, null=True)
     password = CharField(max_length=111, null=True)
@@ -28,17 +27,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.id} - {self.telegram_id} - {self.full_name}"
-
-
-class Restaurant(Model):
-    name = CharField(verbose_name="Restoran nomi", max_length=333, null=True, blank=True)
-    location_latitude = FloatField(verbose_name="Lokatsiya Latidude", max_length=111, default=40.93639, null=True,
-                                   blank=True)
-    location_longitude = FloatField(verbose_name="Lokatsiya Longitude", max_length=111, default=68.76972, null=True,
-                                    blank=True)
-    location_text = TextField(verbose_name="Lokatsiya Matni", null=True, blank=True)
-    location_video = FileField(verbose_name="Lokatsiya Videosi", upload_to='location/',
-                               validators=[FileExtensionValidator(['mp4', 'mov', 'webm'])], blank=True, null=True)
 
 
 class Course(Model):
