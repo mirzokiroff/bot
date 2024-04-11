@@ -35,3 +35,4 @@ async def bot_start(message: types.Message):
                                  resize_keyboard=True
                              ))
         await Language.languages.set()
+
