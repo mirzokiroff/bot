@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 from .forms import Contact_usForm
-from .models import User, Course, About_Edu, Contact_us, Location_Edu, User_Course, About_Edu_Media, CourseMedia
+from .models import User, Course, About_Edu, Contact_us, Location_Edu, User_Course, About_Edu_Media, CourseMedia, \
+    Restaurant
 
 from import_export import resources
 from import_export.admin import ExportActionMixin
@@ -15,6 +16,16 @@ class UserResource(resources.ModelResource):
 
 class UserAdmin(ExportActionMixin, admin.ModelAdmin):
     resource_class = UserResource
+
+
+class RestaurantResource(resources.ModelResource):
+    class Meta:
+        model = Restaurant
+        fields = ('id', 'name', 'location_latitude', 'location_longitude', 'location_text', 'location_video')
+
+
+class RestaurantAdmin(ExportActionMixin, admin.ModelAdmin):
+    resource_class = RestaurantResource
 
 
 class UserCourseResource(resources.ModelResource):
@@ -66,3 +77,4 @@ admin.site.register(Location_Edu)
 admin.site.register(Contact_us, Contact_usAdmin)
 admin.site.register(User, UserAdmin)
 admin.site.register(User_Course, UserCourseAdmin)
+admin.site.register(Restaurant, RestaurantAdmin)

@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fufd*_klwhwlqi7arl(a-q2t!!8bxe16&%a%&%_008fj4-$&&d'
+SECRET_KEY = 'django-insecure-ia72852y2(!ug-bfv==950ds9uhq^q7or94y&m_7-2my$+4)i7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -72,7 +72,7 @@ WSGI_APPLICATION = 'extra.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql_psycopg2",
-        'NAME': "extra_bot_db",
+        'NAME': "restaurant_paid_db",
         'USER': "postgres",
         'PASSWORD': "1",
         'HOST': 'localhost',
