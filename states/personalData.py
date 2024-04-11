@@ -3,12 +3,9 @@ from aiogram.dispatcher.filters.state import StatesGroup, State
 
 class PersonalData(StatesGroup):
     fullname = State()
-    phone_number = State()
     phone_number_for_call = State()
-    activity = State()
-    confirmm_data = State()
     confirm_data = State()
-    start = State()
+    location = State()
 
 
 class Language(StatesGroup):
