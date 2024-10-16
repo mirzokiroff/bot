@@ -13,7 +13,7 @@ class User(AbstractUser):
     phone_number2 = CharField(verbose_name="Qo'shimcha Telefon raqami", max_length=50, null=True, blank=True)
     activity = CharField(verbose_name="Faoliyat turi", max_length=33, null=True, blank=True)
     telegram_id = BigIntegerField(unique=True, null=True, default=1, blank=True)
-    date_joined = DateTimeField(auto_now=True, null=True, blank=True)
+    date_joined = DateTimeField(auto_now_add=True, null=True, blank=True)
     language = CharField(verbose_name="Tanlangan til", max_length=33, null=True, blank=True)
     #
     last_login = DateTimeField(auto_now=True, null=True)
@@ -49,6 +49,7 @@ class User_Course(Model):
     user_phone_number2 = CharField(verbose_name="Foydalanuvchi Aloqa raqami", max_length=50, null=True, blank=True)
     course_name = CharField(verbose_name="Kurslar", max_length=111, blank=True)
     course_type = CharField(verbose_name="Kurs Turi", max_length=33, null=True, blank=True)
+    date_joined = DateTimeField(auto_now_add=True, null=True, blank=True)
 
 
 class About_Edu(Model):

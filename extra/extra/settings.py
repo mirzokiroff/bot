@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-fufd*_klwhwlqi7arl(a-q2t!!8bxe16&%a%&%_008fj4-$&&d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,7 +76,7 @@ DATABASES = {
         'USER': "postgres",
         'PASSWORD': "1",
         'HOST': 'localhost',
-        'PORT': "5433"
+        'PORT': "5432"
     }
 }
 
@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'uz-uz'
 
-TIME_ZONE = 'ASIA/TASHKENT'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 

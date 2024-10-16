@@ -10,17 +10,17 @@ from import_export.admin import ExportActionMixin
 class UserResource(resources.ModelResource):
     class Meta:
         model = User
-        fields = ('id', 'username', 'full_name', 'email', 'phone_number', 'activity', 'telegram_id', 'phone_number2')
+        fields = ('id', 'username', 'full_name', 'email', 'phone_number', 'activity', 'telegram_id', 'phone_number2', 'date_joined')
 
 
 class UserAdmin(ExportActionMixin, admin.ModelAdmin):
     resource_class = UserResource
-
+    list_display = ('id', 'username', 'full_name', 'email', 'phone_number', 'activity', 'telegram_id', 'phone_number2', 'date_joined')
 
 class UserCourseResource(resources.ModelResource):
     class Meta:
         model = User_Course
-        fields = ('id', 'user_name', 'user_phone_number', 'user_phone_number2', 'course_name', 'course_type')
+        fields = ('id', 'user_name', 'user_phone_number', 'user_phone_number2', 'course_name', 'course_type', 'date_joined')
 
 
 class UserCourseAdmin(ExportActionMixin, admin.ModelAdmin):
