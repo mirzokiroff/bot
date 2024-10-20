@@ -1,7 +1,7 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
-
+from datetime import datetime
 from handlers.languages import uz, ru
 from loader import dp, db
 from states.personalData import PersonalData, MainMenu, Language
@@ -176,10 +176,11 @@ async def confirmm_data(message: types.Message, state: FSMContext):
         phone2 = data.get("phone_number")
         phone = data.get("phone")
         activity = data.get("activity")
+	date_joined = datetime.now()
 
         # Ma'lumotlarni bazaga saqlash
         await db.add_user(full_name=name, username=message.from_user.username, phone_number=phone, phone_number2=phone2,
-                          activity=activity, telegram_id=message.from_user.id, language=language)
+                          activity=activity, telegram_id=message.from_user.id, language=language, date_joined=date_joined)
 
         if language == uzbekcha:
             await message.answer(

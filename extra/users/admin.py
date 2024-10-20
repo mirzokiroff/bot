@@ -15,7 +15,8 @@ class UserResource(resources.ModelResource):
 
 class UserAdmin(ExportActionMixin, admin.ModelAdmin):
     resource_class = UserResource
-    list_display = ('id', 'username', 'full_name', 'email', 'phone_number', 'activity', 'telegram_id', 'phone_number2', 'date_joined')
+    fields = ('id', 'username', 'full_name', 'email', 'phone_number', 'activity', 'telegram_id', 'phone_number2', 'date_joined')
+    readonly_fields = ('date_joined', 'id')
 
 class UserCourseResource(resources.ModelResource):
     class Meta:
@@ -25,6 +26,8 @@ class UserCourseResource(resources.ModelResource):
 
 class UserCourseAdmin(ExportActionMixin, admin.ModelAdmin):
     resource_class = UserCourseResource
+    fields = ('id', 'user_name', 'user_phone_number', 'user_phone_number2', 'course_name', 'course_type', 'date_joined')
+    readonly_fields = ('date_joined', 'id')
 
 
 class Contact_usAdmin(admin.ModelAdmin):

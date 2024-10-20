@@ -1,6 +1,6 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-
+from datetime import datetime
 from handlers.languages import uz, ru
 
 from loader import dp, db
@@ -126,6 +126,7 @@ async def confirmm_data(message: types.Message, state: FSMContext):
         name = data.get("name")
         phone_number2 = data.get("phone_number")
         activity = data.get("activity")
+	date_joined = datetime.now()
 
         # Ma'lumotlarni olish
         course_name = data.get("course_name")
@@ -133,7 +134,7 @@ async def confirmm_data(message: types.Message, state: FSMContext):
 
         # Ma'lumotlarni bazaga saqlash
         await db.user_add_course(user_name=name, user_phone_number=phone, course_type=course_type,
-                                 course_name=course_name, user_phone_number2=phone_number2)
+                                 course_name=course_name, user_phone_number2=phone_number2, date_joined=date_joined)
         if language == uzbekcha:
             await message.answer(f"Ma'lumotlar tasdiqlandi!\n"
                                  f"Ism: {name}\n"
