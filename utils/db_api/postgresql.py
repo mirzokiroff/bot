@@ -179,11 +179,13 @@ class Database:
 
     #
 
-    async def user_add_course(self, course_name, course_type, user_name, user_phone_number, user_phone_number2):
+    async def user_add_course(self, course_name, course_type, user_name, user_phone_number, user_phone_number2,
+                              date_joined):
         sql = (
-            "INSERT INTO users_user_course (course_name, course_type, user_name, user_phone_number, user_phone_number2)"
-            " VALUES($1, $2, $3, $4, $5) returning *")
+            "INSERT INTO users_user_course (course_name, course_type, user_name, user_phone_number, user_phone_number2, date_joined)"
+            " VALUES($1, $2, $3, $4, $5, $6) returning *")
         return await self.execute(sql, course_name, course_type, user_name, user_phone_number, user_phone_number2,
+                                  date_joined,
                                   fetchrow=True)
 
     async def user_select_all_courses(self):
@@ -200,10 +202,10 @@ class Database:
         return await self.execute(sql, fetchval=True)
 
     async def user_update_course(self, course_id, new_course_name, new_course_type, new_user_name,
-                                 new_user_phone_number, new_user_phone_number2):
-        sql = "UPDATE users_user_course SET course_name=$1, course_type=$2, user_name=$3, user_phone_number=$4, user_phone_number2=$5 WHERE id=$6"
+                                 new_user_phone_number, new_user_phone_number2, new_date_joined):
+        sql = "UPDATE users_user_course SET course_name=$1, course_type=$2, user_name=$3, user_phone_number=$4, user_phone_number2=$5, date_joined=$6 WHERE id=$7"
         return await self.execute(sql, new_course_name, new_course_type, new_user_name, new_user_phone_number,
-                                  new_user_phone_number2,
+                                  new_user_phone_number2, new_date_joined,
                                   course_id, execute=True)
 
     async def user_delete_course(self, course_id):

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
@@ -130,10 +132,11 @@ async def confirmm_data(message: types.Message, state: FSMContext):
         # Ma'lumotlarni olish
         course_name = data.get("course_name")
         phone = data.get("phone")
+        date_joined = datetime.now()
 
         # Ma'lumotlarni bazaga saqlash
         await db.user_add_course(user_name=name, user_phone_number=phone, course_type=course_type,
-                                 course_name=course_name, user_phone_number2=phone_number2)
+                                 course_name=course_name, user_phone_number2=phone_number2, date_joined=date_joined)
         if language == uzbekcha:
             await message.answer(f"Ma'lumotlar tasdiqlandi!\n"
                                  f"Ism: {name}\n"
