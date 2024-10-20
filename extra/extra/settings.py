@@ -72,7 +72,7 @@ WSGI_APPLICATION = 'extra.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql_psycopg2",
-        'NAME': "restaurant_paid_db",
+        'NAME': "extra_bot_db",
         'USER': "postgres",
         'PASSWORD': "1",
         'HOST': 'localhost',
