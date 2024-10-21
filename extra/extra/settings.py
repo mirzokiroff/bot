@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+from django.conf import global_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-fufd*_klwhwlqi7arl(a-q2t!!8bxe16&%a%&%_008fj4-$&&d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -72,11 +72,11 @@ WSGI_APPLICATION = 'extra.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql_psycopg2",
-        'NAME': "restaurant_paid_db",
+        'NAME': "extra_bot_db",
         'USER': "postgres",
         'PASSWORD': "1",
         'HOST': 'localhost',
-        'PORT': "5433"
+        'PORT': "5432"
     }
 }
 
@@ -105,7 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'uz-uz'
 
-TIME_ZONE = 'ASIA/TASHKENT'
+# TIME_ZONE = 'Asia/Tashkent'
+
+TIME_ZONE = global_settings.TIME_ZONE or 'Asia/Tashkent'
 
 USE_I18N = True
 
