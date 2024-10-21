@@ -128,7 +128,6 @@ async def confirmm_data(message: types.Message, state: FSMContext):
         name = data.get("name")
         phone_number2 = data.get("phone_number")
         activity = data.get("activity")
-	date_joined = datetime.now()
 
         # Ma'lumotlarni olish
         course_name = data.get("course_name")
