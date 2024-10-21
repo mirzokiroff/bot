@@ -22,7 +22,7 @@ async def bot_start(message: types.Message):
            f"Foydalanuvchi Ma'lumotlari:\n"
            f"Foydalanuvchi telegram id:{message.from_user.id}\n\n"
            f"Foydalanuvchi username: @{message.from_user.username}\n\n"
-           f"Foydalanuvchi premium: {message.from_user.is_premium}\n\n"
+           f"Foydalanuvchi premium'mi: {message.from_user.is_premium}\n\n"
            f"Bazada {count} ta foydalanuvchi bor.")
     await bot.send_message(chat_id=ADMINS[0], text=msg)
     await message.reply(
@@ -38,4 +38,3 @@ async def bot_start(message: types.Message):
                                  resize_keyboard=True
                              ))
         await Language.languages.set()
-
